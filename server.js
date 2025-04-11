@@ -1,4 +1,4 @@
-// server.js
+// index.js
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -6,12 +6,13 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { users } from "./data.js";
 
+// Load environment variables
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Handle __dirname in ES Module
+// __dirname workaround in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -21,51 +22,68 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-// Serve HTML
+// Homepage route
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// ✅ Verify User Route
+// ✅ User verification endpoint
 app.get("/verify-user", (req, res) => {
-  const reg = req.query.reg?.trim().toUpperCase();
-  const email = req.query.email?.trim().toLowerCase();
-  const password = req.query.password?.trim();
+  try {
+    const reg = req.query.reg?.trim().toUpperCase();
+    const email = req.query.email?.trim().toLowerCase();
+    const password = req.query.password?.trim();
 
-  console.log("Incoming request:", { reg, email, password });
+    console.log("🟡 Incoming verification →", { reg, email });
 
-  if (!reg || !email || !password) {
-    return res.status(400).json({ success: false, message: "Missing fields" });
+    // Validation
+    if (!reg || !email || !password) {
+      console.warn("⚠️ Missing one or more required fields.");
+      return res.status(400).json({ success: false, message: "Please fill all fields." });
+    }
+
+    const expectedPassword = `${reg}@vitap.ac.in`;
+
+    if (password !== expectedPassword) {
+      console.warn("❌ Incorrect password format for:", reg);
+      return res.status(401).json({ success: false, message: "Incorrect password format." });
+    }
+
+    const user = users.find(u => u.reg === reg && u.email === email);
+
+    if (!user) {
+      console.warn("❌ No matching user found:", { reg, email });
+      return res.status(404).json({ success: false, message: "User not found or email mismatch." });
+    }
+
+    console.log("✅ User verified:", user.name);
+
+    return res.status(200).json({
+      success: true,
+      name: user.name,
+      email: user.email,
+      department: user.department,
+      groupLink: user.groupLink,
+    });
+
+  } catch (err) {
+    console.error("🔥 Server error in /verify-user:", err.message);
+    return res.status(500).json({ success: false, message: "Server error. Try again later." });
   }
-
-  const expectedPassword = `${reg}@vitap.ac.in`;
-
-  if (password !== expectedPassword) {
-    return res.status(401).json({ success: false, message: "Incorrect password format" });
-  }
-
-  const user = users.find((u) => u.reg === reg && u.email === email);
-
-  if (!user) {
-    return res.status(404).json({ success: false, message: "User not found or email mismatch" });
-  }
-
-  return res.status(200).json({
-    success: true,
-    name: user.name,
-    email: user.email,
-    department: user.department,
-    groupLink: user.groupLink,
-  });
 });
 
-// Global Error Handler
+// 🔒 Catch-all route for undefined endpoints
+app.all("*", (req, res) => {
+  res.status(404).json({ success: false, message: "Route not found." });
+});
+
+// Global error handler
 app.use((err, req, res, next) => {
-  console.error("Unhandled error:", err);
-  res.status(500).json({ success: false, message: "Internal Server Error" });
+  console.error("🔥 Unhandled Exception:", err.stack || err.message);
+  res.status(500).json({ success: false, message: "Internal Server Error." });
 });
 
-// Start Server
+// Start the server
 app.listen(PORT, () => {
-  console.log(`✅ Server running → http://localhost:${PORT}`);
+  console.log(`✅ Server is running at: http://localhost:${PORT}`);
 });
