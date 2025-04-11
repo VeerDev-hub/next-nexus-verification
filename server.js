@@ -21,12 +21,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-// Root Route - Serve HTML
+// Serve HTML
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// 🛡️ Verify User
+// ✅ Verify User Route
 app.get("/verify-user", (req, res) => {
   const reg = req.query.reg?.trim().toUpperCase();
   const email = req.query.email?.trim().toLowerCase();
@@ -59,14 +59,13 @@ app.get("/verify-user", (req, res) => {
   });
 });
 
-// Optional: Catch errors
+// Global Error Handler
 app.use((err, req, res, next) => {
   console.error("Unhandled error:", err);
   res.status(500).json({ success: false, message: "Internal Server Error" });
 });
 
-// Start
+// Start Server
 app.listen(PORT, () => {
   console.log(`✅ Server running → http://localhost:${PORT}`);
-  console.log(`📱 On mobile, visit → http://<YOUR_IP>:${PORT}`);
 });
