@@ -76,7 +76,7 @@
       }
 
       try {
-        const res = await fetch(`http://192.168.1.10:3000/verify-user?reg=${regNo}&email=${email}&password=${password}`);
+        const res = await fetch(`https://your-backend-name.onrender.com/verify-user?reg=${regNo}&email=${email}&password=${password}`);
         const data = await res.json();
 
         if (data.success) {
