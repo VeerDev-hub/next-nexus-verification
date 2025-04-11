@@ -5,7 +5,7 @@ export const users = [
     email: "aanya.24bca7571@vitapstudent.ac.in",
     department: "EVENT MANAGEMENT",
     groupLink: "https://chat.whatsapp.com/DDsTRQETa1x7y5c1AEcFcw",
-    password: "Aro@471vB!x"
+    password: "aanya571"
   },
   {
     name: "Bolisetty Lakshmi Harshitha",
@@ -13,7 +13,7 @@ export const users = [
     email: "harshitha.24bca8008@vitapstident.ac.in",
     department: "EVENT MANAGEMENT",
     groupLink: "https://chat.whatsapp.com/DDsTRQETa1x7y5c1AEcFcw",
-    password: "Har@008Lp$z"
+    password: "harshitha008"
   },
   {
     name: "Ch. Nikhitha Sri Devi",
@@ -21,7 +21,7 @@ export const users = [
     email: "devi.24mis7341@vitapstudent.ac.in",
     department: "EVENT MANAGEMENT",
     groupLink: "https://chat.whatsapp.com/DDsTRQETa1x7y5c1AEcFcw",
-    password: "Nik@341vC#d"
+    password: "nikhitha341"
   },
   {
     name: "Keerthana",
@@ -29,7 +29,7 @@ export const users = [
     email: "keerthana.24bev7036@vitapstudent.ac.in",
     department: "EVENT MANAGEMENT",
     groupLink: "https://chat.whatsapp.com/DDsTRQETa1x7y5c1AEcFcw",
-    password: "Kee@036bX!q"
+    password: "keerthana036"
   },
   {
     name: "Mamidi Samitha",
@@ -37,7 +37,7 @@ export const users = [
     email: "samitha.24mic7112@vitapstudent.ac.in",
     department: "EVENT MANAGEMENT",
     groupLink: "https://chat.whatsapp.com/DDsTRQETa1x7y5c1AEcFcw",
-    password: "Sam@112bM%g"
+    password: "samitha112"
   },
   {
     name: "Preetham",
@@ -45,7 +45,7 @@ export const users = [
     email: "preetham.24mis7221@vitapstudent.ac.in",
     department: "EVENT MANAGEMENT",
     groupLink: "https://chat.whatsapp.com/DDsTRQETa1x7y5c1AEcFcw",
-    password: "Pre@221cX&d"
+    password: "preetham221"
   },
   {
     name: "Soumik Paul",
@@ -53,7 +53,7 @@ export const users = [
     email: "soumik.24bec7010@vitapstudent.ac.in",
     department: "EVENT MANAGEMENT",
     groupLink: "https://chat.whatsapp.com/DDsTRQETa1x7y5c1AEcFcw",
-    password: "Sou@010zP#k"
+    password: "soumik010"
   },
   {
     name: "Aagman Sharma",
@@ -61,7 +61,7 @@ export const users = [
     email: "aagman.24bcb7031@vitapstudent.ac.in",
     department: "Marketing",
     groupLink: "https://chat.whatsapp.com/CyMkB4KtGBxB8cNj87VLEz",
-    password: "Aag@031vT$m"
+    password: "aagman031"
   },
   {
     name: "Dewansh Wagh",
@@ -69,7 +69,7 @@ export const users = [
     email: "dewansh.24bce8079@vitapstudent.ac.in",
     department: "Marketing",
     groupLink: "https://chat.whatsapp.com/CyMkB4KtGBxB8cNj87VLEz",
-    password: "Dew@079yC!r"
+    password: "dewansh079"
   },
   {
     name: "Sucharita Sai Palli",
@@ -77,7 +77,7 @@ export const users = [
     email: "sucharita.24bes7051@vitapstudent.ac.in",
     department: "Marketing",
     groupLink: "https://chat.whatsapp.com/CyMkB4KtGBxB8cNj87VLEz",
-    password: "Suc@051rQ@e"
+    password: "sucharita051"
   },
   {
     name: "Ved Prakash Yadav",
@@ -85,7 +85,7 @@ export const users = [
     email: "ved.24mic7027@vitapstudent.ac.in",
     department: "Marketing",
     groupLink: "https://chat.whatsapp.com/CyMkB4KtGBxB8cNj87VLEz",
-    password: "Ved@027mX#f"
+    password: "ved027"
   },
   {
     name: "Aditya Sharma",
@@ -93,7 +93,7 @@ export const users = [
     email: "aditya.24bce8057@vitapstudent.ac.in",
     department: "Marketing",
     groupLink: "https://chat.whatsapp.com/CyMkB4KtGBxB8cNj87VLEz",
-    password: "Adi@057bK%z"
+    password: "aditya057"
   },
   {
     name: "MOHAMMED ARSH KHAN",
@@ -101,7 +101,7 @@ export const users = [
     email: "arsh.24bcs7028@vitapstudent.ac.in",
     department: "Social Media",
     groupLink: "https://chat.whatsapp.com/FoDs79jOfnt3QXOz7KCr8u",
-    password: "Ars@028pW&m"
+    password: "arsh028"
   },
   {
     name: "Aradhya Nautiyal",
@@ -109,7 +109,7 @@ export const users = [
     email: "aradhya.23bcb7040@vitapstudent.ac.in",
     department: "Technical",
     groupLink: "https://chat.whatsapp.com/Cvd4JlRkymT4uLiF7MOgC0",
-    password: "Ara@040qZ#x"
+    password: "aradhya040"
   },
   {
     name: "Aswin",
@@ -117,7 +117,7 @@ export const users = [
     email: "aswin.23mic7186@vitapstudent.ac.in",
     department: "Technical",
     groupLink: "https://chat.whatsapp.com/Cvd4JlRkymT4uLiF7MOgC0",
-    password: "Asw@186yX$d"
+    password: "aswin186"
   },
   {
     name: "MAHITHA VARANASI",
@@ -125,7 +125,7 @@ export const users = [
     email: "mahitha.23bce9914@vitapstudent.ac.in",
     department: "Technical",
     groupLink: "https://chat.whatsapp.com/Cvd4JlRkymT4uLiF7MOgC0",
-    password: "Mah@914zV*w"
+    password: "mahitha914"
   },
   {
     name: "Rahul T P",
@@ -133,7 +133,7 @@ export const users = [
     email: "rahul.24bce7939@vitapstudent.ac.in",
     department: "Technical",
     groupLink: "https://chat.whatsapp.com/Cvd4JlRkymT4uLiF7MOgC0",
-    password: "Rah@939bW!p"
+    password: "rahul939"
   },
   {
     name: "Veer Pratap Singh",
@@ -141,6 +141,6 @@ export const users = [
     email: "pratap.23bce7453@vitapstudent.ac.in",
     department: "Technical",
     groupLink: "https://chat.whatsapp.com/Cvd4JlRkymT4uLiF7MOgC0",
-    password: "Vee@453zT#s"
+    password: "veer453"
   }
 ];
