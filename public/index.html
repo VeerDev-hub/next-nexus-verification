@@ -1,3 +1,4 @@
+<!-- public/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,18 +76,16 @@
       }
 
       try {
-        const res = await fetch(`http://localhost:3000/verify-user?reg=${regNo}&email=${email}&password=${password}`);
+        const res = await fetch(`http://192.168.1.10:3000/verify-user?reg=${regNo}&email=${email}&password=${password}`);
         const data = await res.json();
 
         if (data.success) {
-          // 🎉 Trigger confetti
           confetti({
             particleCount: 250,
             spread: 120,
             origin: { y: 0.6 },
           });
 
-          // 🎊 Replace content with congratulations screen
           container.innerHTML = `
             <div class="text-center fade-in-up p-6 bg-gradient-to-br from-gray-900 to-black rounded-xl border-2 border-indigo-500 shadow-2xl">
               <div class="animate-bounce text-4xl mb-4">🎉</div>
