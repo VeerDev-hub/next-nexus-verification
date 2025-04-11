@@ -36,9 +36,6 @@ app.get("/verify-user", (req, res) => {
 
     console.log("🟡 Incoming:", { reg, email, password });
 
-    // Log available users for debugging
-    console.log("📘 Registered users:", users);
-
     // Input validation
     if (!reg || !email || !password) {
       return res.status(400).json({ success: false, message: "Please fill all fields." });
@@ -62,13 +59,10 @@ app.get("/verify-user", (req, res) => {
     return res.status(200).json({
       success: true,
       name: user.name,
+      reg: user.reg,
       email: user.email,
       department: user.department,
-      groupLink: user.groupLink,
-      rollNumber: user.rollNumber,
-      whatsapp: user.whatsapp,
-      contact: user.contact,
-      role: user.role,
+      groupLink: user.groupLink
     });
 
   } catch (err) {
