@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Next Nexus | Verify & Join</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Team Next Nexus</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @keyframes fadeInUp {
@@ -43,11 +43,9 @@
       </div>
 
       <div>
-        <label for="password" class="block text-sm text-gray-400 mb-1">Password</label>
-        <input id="password" type="password" placeholder="e.g. 22BCE****@vitap.ac.in" class="w-full px-4 py-2 bg-gray-800 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+        <label for="password" class="block text-sm text-gray-400 mb-1">Assigned Password</label>
+        <input id="password" type="password" placeholder="Check your assigned password" class="w-full px-4 py-2 bg-gray-800 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
       </div>
-
-      <p class="text-xs text-gray-400 italic text-center">Password Format: <code>RegNo@vitap.ac.in</code></p>
 
       <button onclick="verifyUser()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded-md transition duration-300">
         Verify & Join
@@ -77,19 +75,14 @@
       }
 
       try {
-        const res = await fetch(`https://next-nexus-verification.onrender.com/verify-user?reg=${regNo}&email=${email}&password=${password}`);
+        const query = new URLSearchParams({ reg: regNo, email, password });
+        const res = await fetch(`https://next-nexus-verification.onrender.com/verify-user?${query}`);
         const data = await res.json();
 
-        if (!res.ok) {
-          throw new Error(data.message || "Unexpected error occurred.");
-        }
+        if (!res.ok) throw new Error(data.message || "Unexpected error occurred.");
 
         if (data.success) {
-          confetti({
-            particleCount: 250,
-            spread: 120,
-            origin: { y: 0.6 },
-          });
+          confetti({ particleCount: 250, spread: 120, origin: { y: 0.6 } });
 
           container.innerHTML = `
             <div class="text-center fade-in-up p-6 bg-gradient-to-br from-gray-900 to-black rounded-xl border-2 border-indigo-500 shadow-2xl">
