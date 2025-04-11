@@ -22,12 +22,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-// Homepage route
+// Route: Homepage
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// ✅ Updated User verification endpoint
+// Route: User verification
 app.get("/verify-user", (req, res) => {
   try {
     const reg = req.query.reg?.trim().toUpperCase();
@@ -36,12 +36,13 @@ app.get("/verify-user", (req, res) => {
 
     console.log("🟡 Incoming verification →", { reg, email });
 
-    // Validation
+    // Basic input validation
     if (!reg || !email || !password) {
       console.warn("⚠️ Missing one or more required fields.");
       return res.status(400).json({ success: false, message: "Please fill all fields." });
     }
 
+    // Search for matching user
     const user = users.find(u =>
       u.reg === reg &&
       u.email === email &&
@@ -49,12 +50,13 @@ app.get("/verify-user", (req, res) => {
     );
 
     if (!user) {
-      console.warn("❌ No matching user found or incorrect password:", { reg, email });
+      console.warn("❌ Invalid credentials:", { reg, email });
       return res.status(401).json({ success: false, message: "Invalid credentials." });
     }
 
     console.log("✅ User verified:", user.name);
 
+    // Send verified user info
     return res.status(200).json({
       success: true,
       name: user.name,
@@ -69,7 +71,7 @@ app.get("/verify-user", (req, res) => {
   }
 });
 
-// 🔒 Catch-all route
+// Catch-all route
 app.all("*", (req, res) => {
   res.status(404).json({ success: false, message: "Route not found." });
 });
