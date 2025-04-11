@@ -19,19 +19,19 @@
   </style>
 </head>
 <body class="terminal-bg text-white min-h-screen flex items-center justify-center px-4">
-  <div class="bg-gray-900 border border-gray-800 shadow-xl rounded-2xl p-8 max-w-md w-full fade-in-up relative" id="mainContainer">
+  <main class="bg-gray-900 border border-gray-800 shadow-xl rounded-2xl p-8 max-w-md w-full fade-in-up relative" id="mainContainer">
 
     <!-- Logo & Welcome Section -->
-    <div class="text-center">
+    <header class="text-center">
       <div class="h-24 w-24 mx-auto bg-gray-900 rounded-full mb-4 flex items-center justify-center ring-4 ring-indigo-500 hover:ring-indigo-400 transition duration-300 shadow-lg">
-        <img src="./tnn.png" alt="TNN Logo" class="rounded-full h-20 w-20 object-cover animate-pulse" />
+        <img src="./tnn.png" alt="TNN Logo" class="rounded-full h-20 w-20 object-cover animate-pulse" loading="lazy" onerror="this.src='https://via.placeholder.com/80x80?text=TNN';" />
       </div>
       <h1 class="text-2xl font-bold text-white tracking-wider">Welcome to <span class="text-indigo-400">Team Next Nexus</span></h1>
       <p class="text-sm text-gray-400 mt-2 italic">Your gateway to innovation starts here.</p>
-    </div>
+    </header>
 
     <!-- Form Section -->
-    <div class="mt-6 space-y-4">
+    <section class="mt-6 space-y-4">
       <div>
         <label for="regNo" class="block text-sm text-gray-400 mb-1">Registration Number</label>
         <input id="regNo" type="text" placeholder="e.g. 22BCE****" class="w-full px-4 py-2 bg-gray-800 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
@@ -52,10 +52,10 @@
       <button onclick="verifyUser()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded-md transition duration-300">
         Verify & Join
       </button>
-    </div>
+    </section>
 
     <p id="error" class="text-red-500 text-sm mt-4 text-center hidden"></p>
-  </div>
+  </main>
 
   <!-- Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -94,7 +94,7 @@
           container.innerHTML = `
             <div class="text-center fade-in-up p-6 bg-gradient-to-br from-gray-900 to-black rounded-xl border-2 border-indigo-500 shadow-2xl">
               <div class="animate-bounce text-4xl mb-4">🎉</div>
-              <h1 class="text-3xl font-bold text-indigo-400 mb-2">Congratulations, ${data.name}!</h1>
+              <h2 class="text-3xl font-bold text-indigo-400 mb-2">Congratulations, ${data.name}!</h2>
               <p class="text-lg text-gray-200 mb-4">You've been selected as a proud member of the <span class="text-indigo-500 font-semibold">${data.department}</span> team at <span class="text-indigo-400">Next Nexus</span>.</p>
               <p class="text-md text-gray-400 italic mb-6">This is where your innovation journey begins. We believe in you. Let’s build something awesome together!</p>
               <a href="${data.groupLink}" target="_blank" class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-md transition duration-300">
