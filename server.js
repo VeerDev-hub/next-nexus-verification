@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// ✅ User verification endpoint
+// ✅ Updated User verification endpoint
 app.get("/verify-user", (req, res) => {
   try {
     const reg = req.query.reg?.trim().toUpperCase();
@@ -42,18 +42,15 @@ app.get("/verify-user", (req, res) => {
       return res.status(400).json({ success: false, message: "Please fill all fields." });
     }
 
-    const expectedPassword = `${reg}@vitap.ac.in`;
-
-    if (password !== expectedPassword) {
-      console.warn("❌ Incorrect password format for:", reg);
-      return res.status(401).json({ success: false, message: "Incorrect password format." });
-    }
-
-    const user = users.find(u => u.reg === reg && u.email === email);
+    const user = users.find(u =>
+      u.reg === reg &&
+      u.email === email &&
+      u.password === password
+    );
 
     if (!user) {
-      console.warn("❌ No matching user found:", { reg, email });
-      return res.status(404).json({ success: false, message: "User not found or email mismatch." });
+      console.warn("❌ No matching user found or incorrect password:", { reg, email });
+      return res.status(401).json({ success: false, message: "Invalid credentials." });
     }
 
     console.log("✅ User verified:", user.name);
@@ -72,7 +69,7 @@ app.get("/verify-user", (req, res) => {
   }
 });
 
-// 🔒 Catch-all route for undefined endpoints
+// 🔒 Catch-all route
 app.all("*", (req, res) => {
   res.status(404).json({ success: false, message: "Route not found." });
 });
