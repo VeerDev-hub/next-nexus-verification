@@ -80,6 +80,10 @@
         const res = await fetch(`https://next-nexus-verification.onrender.com/verify-user?reg=${regNo}&email=${email}&password=${password}`);
         const data = await res.json();
 
+        if (!res.ok) {
+          throw new Error(data.message || "Unexpected error occurred.");
+        }
+
         if (data.success) {
           confetti({
             particleCount: 250,
@@ -98,12 +102,9 @@
               </a>
             </div>
           `;
-        } else {
-          error.innerText = data.message || "User not found or email mismatch.";
-          error.classList.remove("hidden");
         }
       } catch (e) {
-        error.innerText = "Something went wrong. Please try again.";
+        error.innerText = e.message || "Something went wrong. Please try again later.";
         error.classList.remove("hidden");
       }
     }
