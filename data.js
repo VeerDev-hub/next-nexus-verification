@@ -124,6 +124,13 @@ export const users = [
       email: "pratap.23bce7453@vitapstudent.ac.in",
       department: "Technical",
       groupLink: "https://chat.whatsapp.com/Cvd4JlRkymT4uLiF7MOgC0"
+    },
+     {
+      name: "Samradh Agarwal",
+      reg: "23BCE9250",
+      email: "samradh.23bce9250@vitapstudent.ac.in",
+      department: "Technical",
+      groupLink: "https://chat.whatsapp.com/Cvd4JlRkymT4uLiF7MOgC0"
     }
   ];
   
