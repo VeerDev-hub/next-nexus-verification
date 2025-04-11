@@ -34,15 +34,17 @@ app.get("/verify-user", (req, res) => {
     const email = req.query.email?.trim().toLowerCase();
     const password = req.query.password?.trim();
 
-    console.log("🟡 Incoming verification →", { reg, email });
+    console.log("🟡 Incoming:", { reg, email, password });
 
-    // Basic input validation
+    // Log available users for debugging
+    console.log("📘 Registered users:", users);
+
+    // Input validation
     if (!reg || !email || !password) {
-      console.warn("⚠️ Missing one or more required fields.");
       return res.status(400).json({ success: false, message: "Please fill all fields." });
     }
 
-    // Search for matching user
+    // Find matching user
     const user = users.find(u =>
       u.reg === reg &&
       u.email === email &&
@@ -50,13 +52,13 @@ app.get("/verify-user", (req, res) => {
     );
 
     if (!user) {
-      console.warn("❌ Invalid credentials:", { reg, email });
+      console.warn("❌ No match found for:", { reg, email });
       return res.status(401).json({ success: false, message: "Invalid credentials." });
     }
 
     console.log("✅ User verified:", user.name);
 
-    // Send verified user info
+    // Send success response
     return res.status(200).json({
       success: true,
       name: user.name,
@@ -66,7 +68,7 @@ app.get("/verify-user", (req, res) => {
     });
 
   } catch (err) {
-    console.error("🔥 Server error in /verify-user:", err.message);
+    console.error("🔥 Error in /verify-user:", err.message);
     return res.status(500).json({ success: false, message: "Server error. Try again later." });
   }
 });
@@ -76,13 +78,13 @@ app.all("*", (req, res) => {
   res.status(404).json({ success: false, message: "Route not found." });
 });
 
-// Global error handler
+// Error handler
 app.use((err, req, res, next) => {
   console.error("🔥 Unhandled Exception:", err.stack || err.message);
   res.status(500).json({ success: false, message: "Internal Server Error." });
 });
 
-// Start the server
+// Start server
 app.listen(PORT, () => {
-  console.log(`✅ Server is running at: http://localhost:${PORT}`);
+  console.log(`✅ Server running at: http://localhost:${PORT}`);
 });
