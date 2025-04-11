@@ -65,6 +65,10 @@ app.get("/verify-user", (req, res) => {
       email: user.email,
       department: user.department,
       groupLink: user.groupLink,
+      rollNumber: user.rollNumber,
+      whatsapp: user.whatsapp,
+      contact: user.contact,
+      role: user.role,
     });
 
   } catch (err) {
